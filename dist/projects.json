@@ -1,0 +1,41 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Network Monitoring & Traffic Testing System",
+      "description": "Machine learning-based system for analyzing network traffic and detecting different types of network attacks using the CIC-IDS2017 dataset.",
+      "tech": [
+        "Python",
+        "Machine Learning",
+        "Scikit-learn",
+        "Random Forest",
+        "Streamlit"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "RAG Chatbot",
+      "description": "A document-based chatbot that retrieves relevant information from PDF documents and generates answers using a Retrieval-Augmented Generation approach.",
+      "tech": [
+        "Python",
+        "Flask",
+        "RAG",
+        "Embeddings",
+        "Sentence Transformers",
+        "PyPDF"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Titanic Machine Learning",
+      "description": "Machine learning practice project for predicting passenger survival using data preprocessing, feature preparation, and classification models.",
+      "tech": [
+        "Python",
+        "Pandas",
+        "Scikit-learn",
+        "Machine Learning",
+        "Data Analysis"
+      ]
+    }
+  ]
+}
