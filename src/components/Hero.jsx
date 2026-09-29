@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useMagnetic } from '../hooks/useMagnetic';
 import './Hero.css';
-import mainimg from '../assets/main-img.webp';
+import mainimg from '../assets/rawan-profile.webp';
 
 const Hero = () => {
     const gitHubBtnRef = useMagnetic(0.3);

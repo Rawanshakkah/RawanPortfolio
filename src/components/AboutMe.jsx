@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import profileImg from '../assets/main-img.webp';
+import profileImg from '../assets/rawan-profile.webp';
 import './AboutMe.css';
 
 const AboutMe = () => {
