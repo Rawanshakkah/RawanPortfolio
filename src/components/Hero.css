@@ -400,3 +400,60 @@
         width: 100%;
     }
 }
+
+.hero-icon-button {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+/* GitHub */
+.hero-icon-button[aria-label="GitHub"] {
+    background: #171717;
+    color: white;
+}
+
+.hero-icon-button[aria-label="GitHub"] i {
+    font-size: 2.5rem;
+}
+
+/* LinkedIn */
+.hero-icon-button[aria-label="LinkedIn"] {
+    background: #087db5;
+    color: white;
+}
+
+.hero-icon-button[aria-label="LinkedIn"] i {
+    font-size: 2.5rem;
+}
+
+/* CV */
+.hero-icon-button[aria-label="View CV"] {
+    background: white;
+    color: #111;
+}
+
+.hero-icon-button[aria-label="View CV"] i {
+    font-size: 2.5rem;
+}
+
+/* Gmail */
+.hero-icon-button[aria-label="Email"] {
+    background: white;
+    color: #EA4335;
+}
+
+.hero-icon-button[aria-label="Email"] i {
+    font-size: 2.5rem;
+}
+
+.hero-icon-button:hover {
+    transform: translateY(-5px);
+}

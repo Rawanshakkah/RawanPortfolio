@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useMagnetic } from '../hooks/useMagnetic';
 import './Hero.css';
@@ -5,7 +6,9 @@ import mainimg from '../assets/rawan-profile.webp';
 
 const Hero = () => {
     const gitHubBtnRef = useMagnetic(0.3);
-    const resumeBtnRef = useMagnetic(0.3);
+    const linkedInBtnRef = useMagnetic(0.3);
+    const cvBtnRef = useMagnetic(0.3);
+    const emailBtnRef = useMagnetic(0.3);
 
     const [currentRole, setCurrentRole] = useState(0);
     const [displayText, setDisplayText] = useState('');
@@ -24,42 +27,27 @@ const Hero = () => {
             if (!isDeleting) {
                 if (displayText.length < role.length) {
                     setDisplayText(
-                        role.slice(
-                            0,
-                            displayText.length + 1
-                        )
+                        role.slice(0, displayText.length + 1)
                     );
                 } else {
-                    setTimeout(
-                        () => setIsDeleting(true),
-                        1500
-                    );
+                    setTimeout(() => setIsDeleting(true), 1500);
                 }
             } else {
                 if (displayText.length > 0) {
                     setDisplayText(
-                        role.slice(
-                            0,
-                            displayText.length - 1
-                        )
+                        role.slice(0, displayText.length - 1)
                     );
                 } else {
                     setIsDeleting(false);
-
                     setCurrentRole(
-                        (prev) =>
-                            (prev + 1) % roles.length
+                        (prev) => (prev + 1) % roles.length
                     );
                 }
             }
         }, isDeleting ? 50 : 100);
 
         return () => clearTimeout(timeout);
-    }, [
-        displayText,
-        isDeleting,
-        currentRole
-    ]);
+    }, [displayText, isDeleting, currentRole]);
 
     return (
         <section id="home" className="hero">
@@ -73,8 +61,7 @@ const Hero = () => {
                         style={{
                             left: `${Math.random() * 100}%`,
                             animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${15 + Math.random() * 10
-                                }s`,
+                            animationDuration: `${15 + Math.random() * 10}s`,
                         }}
                     />
                 ))}
@@ -88,26 +75,11 @@ const Hero = () => {
                         <div className="hero-image-wrapper">
                             <img
                                 src={mainimg}
-                                alt="Rawan Shakkah - Software Engineer"
+                                alt="Rawan Shaqaqha - Software Engineer"
                                 className="hero-image"
                             />
 
                             <div className="image-glow"></div>
-                        </div>
-
-                        {/* Social Links */}
-                        <div className="hero-socials">
-
-                            <a
-                                href="https://github.com/Rawanshakkah"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-link"
-                                aria-label="GitHub"
-                            >
-                                <i className="bx bxl-github"></i>
-                            </a>
-
                         </div>
                     </div>
 
@@ -123,58 +95,79 @@ const Hero = () => {
 
                         <h2
                             className="hero-subtitle slide-in-right"
-                            style={{
-                                animationDelay: '0.2s'
-                            }}
+                            style={{ animationDelay: '0.2s' }}
                         >
                             <span className="typed-text">
                                 {displayText}
                             </span>
 
-                            <span className="cursor">
-                                |
-                            </span>
+                            <span className="cursor">|</span>
                         </h2>
 
                         <p
                             className="hero-description slide-in-right"
-                            style={{
-                                animationDelay: '0.4s'
-                            }}
+                            style={{ animationDelay: '0.4s' }}
                         >
                             Software Engineer focused on
                             building practical and modern
                             web applications.
                         </p>
 
-                        {/* CTA Buttons */}
+                        {/* Social & CV Icons */}
                         <div
                             className="hero-buttons slide-in-right"
-                            style={{
-                                animationDelay: '0.6s'
-                            }}
+                            style={{ animationDelay: '0.6s' }}
                         >
 
+                            {/* GitHub */}
                             <a
                                 ref={gitHubBtnRef}
                                 href="https://github.com/Rawanshakkah"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-primary"
+                                className="hero-icon-button"
+                                aria-label="GitHub"
+                                title="GitHub"
                             >
                                 <i className="bx bxl-github"></i>
-                                View GitHub
+
                             </a>
 
+                            {/* LinkedIn */}
                             <a
-                                ref={resumeBtnRef}
-                                href="/resume.pdf"
+                                ref={linkedInBtnRef}
+                                href="https://www.linkedin.com/in/rawan-shakkah-/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-secondary"
+                                className="hero-icon-button"
+                                aria-label="LinkedIn"
+                                title="LinkedIn"
+                            >
+                                <i className="bx bxl-linkedin"></i>
+                            </a>
+
+                            {/* CV */}
+                            <a
+                                ref={cvBtnRef}
+                                href="/CV.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hero-icon-button"
+                                aria-label="View CV"
+                                title="CV"
                             >
                                 <i className="bx bx-file"></i>
-                                View Resume
+                            </a>
+
+                            {/* Email */}
+                            <a
+                                ref={emailBtnRef}
+                                href="mailto:rawanshakkah@gmail.com"
+                                className="hero-icon-button"
+                                aria-label="Email"
+                                title="Email"
+                            >
+                                <i className="bx bxl-gmail"></i>
                             </a>
 
                         </div>

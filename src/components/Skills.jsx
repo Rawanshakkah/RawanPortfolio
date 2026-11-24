@@ -110,36 +110,38 @@ const Skills = () => {
                 },
             ],
         },
+
         {
             title: 'Networking',
             icon: 'bx bx-network-chart',
             skills: [
                 {
                     name: 'Networking',
-                    icon: 'https://api.iconify.design/mdi:lan.svg',
+                    iconClass: 'bx bx-network-chart',
                 },
                 {
                     name: 'VLAN',
-                    icon: 'https://api.iconify.design/mdi:lan-connect.svg',
+                    iconClass: 'bx bx-git-branch',
                 },
                 {
                     name: 'OSPF',
-                    icon: 'https://api.iconify.design/mdi:transit-connection-variant.svg',
+                    iconClass: 'bx bx-share-alt',
                 },
-               {
+                {
                     name: 'Wireshark',
-                    icon: 'https://api.iconify.design/mdi:shark.svg',
+                    iconClass: 'bx bx-radar',
                 },
                 {
                     name: 'FortiGate',
-                    icon: 'https://api.iconify.design/mdi:shield-check.svg',
+                    iconClass: 'bx bx-shield-quarter',
                 },
                 {
                     name: 'Packet Tracer',
-                    icon: 'https://api.iconify.design/mdi:router-network.svg',
+                    iconClass: 'bx bx-desktop'
                 },
             ],
         },
+
     ];
 
     return (
@@ -183,13 +185,19 @@ const Skills = () => {
                                         className="skill-card"
                                         key={skill.name}
                                     >
+
                                         <div className="skill-icon">
-                                            <img
-                                                src={skill.icon}
-                                                alt={`${skill.name} icon`}
-                                                loading="lazy"
-                                            />
+                                            {skill.iconClass ? (
+                                                <i className={skill.iconClass}></i>
+                                            ) : (
+                                                <img
+                                                    src={skill.icon}
+                                                    alt={`${skill.name} icon`}
+                                                    loading="lazy"
+                                                />
+                                            )}
                                         </div>
+
 
                                         <span>{skill.name}</span>
                                     </div>

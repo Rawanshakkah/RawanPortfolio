@@ -1,4 +1,4 @@
-# Rawan Shakkah — Developer Portfolio
+# Rawan Shaqaqha — Developer Portfolio
 
 A personal portfolio website built with React and Vite to showcase my projects, technical skills, and software development journey.
 
@@ -131,7 +131,7 @@ The website will evolve as I build new features and projects.
 
 ## 👩‍💻 Author
 
-**Rawan Shakkah**
+**Rawan Shaqaqha**
 
 Software Engineer focused on Full-Stack Development.
 

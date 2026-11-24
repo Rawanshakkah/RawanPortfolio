@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import './Terminal.css';
 
@@ -25,10 +26,10 @@ const Terminal = () => {
 
     const commands = {
         help:
-            "Available: about, skills, projects, contact, resume, clear, cd [section], ls [skills|projects], whoami, kill, exit",
+            "Available: about, skills, projects, contact, cv, clear, cd [section], ls [skills|projects], whoami, kill, exit",
 
         about:
-            "Rawan Shakkah: Computer Engineering graduate focused on Full-Stack Development.",
+            "Rawan Shaqaqha: Computer Engineering graduate focused on Full-Stack Development.",
 
         skills:
             "C#, ASP.NET Core, React, Python, SQL, Networking, Git, Docker.",
@@ -37,13 +38,13 @@ const Terminal = () => {
             "Featured: Network Monitoring & Traffic Testing System, RAG Chatbot, Titanic Machine Learning.",
 
         whoami:
-            "Rawan Shakkah. Software Engineer. Full-Stack Developer. Always Learning.",
+            "Rawan Shaqaqha. Software Engineer. Full-Stack Developer. Always Learning.",
 
         contact:
             "Go to the contact section to get in touch.",
 
-        resume:
-            "Opening resume.pdf...",
+        cv:
+            "Opening CV.pdf...",
 
         clear:
             "clear",
@@ -74,7 +75,7 @@ const Terminal = () => {
 
         const rawInput = input.toLowerCase().trim();
 
-        // Handle Interactive flows (y/n)
+        // Handle interactive flows (y/n)
         if (
             pendingAction &&
             (rawInput === 'y' || rawInput === 'yes')
@@ -141,8 +142,7 @@ const Terminal = () => {
             }
 
             else {
-                response =
-                    'Usage: ls [skills|projects]';
+                response = 'Usage: ls [skills|projects]';
             }
 
             setHistory((prev) => [
@@ -153,16 +153,23 @@ const Terminal = () => {
         }
 
         else if (cmd === 'cd') {
-            const targetSection =
-                arg === 'about' ? 'about-me' : arg;
+            const sections = {
+                home: 'home',
+                about: 'about-me',
+                projects: 'projects',
+                skills: 'skills',
+                contact: 'contact'
+            };
 
-            if (scrollToSection(targetSection)) {
+            const targetSection = sections[arg];
+
+            if (targetSection && scrollToSection(targetSection)) {
                 response = `Navigating to ${arg}...`;
             }
 
             else {
                 response =
-                    `Section not found: ${arg}. Try: home, about, projects, skills, contact`;
+                    'Section not found. Try: home, about, projects, skills, contact';
             }
 
             setHistory((prev) => [
@@ -180,8 +187,9 @@ const Terminal = () => {
             ]);
         }
 
-        if (cmd === 'resume') {
-            window.open('/resume.pdf', '_blank');
+        // Open CV
+        if (cmd === 'cv') {
+            window.open('/CV.pdf', '_blank');
         }
 
         setInput('');
@@ -221,13 +229,8 @@ const Terminal = () => {
                 terminalRef.current
             ) {
                 setPosition({
-                    x:
-                        e.clientX -
-                        offset.current.x,
-
-                    y:
-                        e.clientY -
-                        offset.current.y
+                    x: e.clientX - offset.current.x,
+                    y: e.clientY - offset.current.y
                 });
             }
         };
@@ -236,36 +239,14 @@ const Terminal = () => {
             isDragging.current = false;
         };
 
-        window.addEventListener(
-            'keydown',
-            handleKeyDown
-        );
-
-        window.addEventListener(
-            'mousemove',
-            handleMouseMove
-        );
-
-        window.addEventListener(
-            'mouseup',
-            handleMouseUp
-        );
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
 
         return () => {
-            window.removeEventListener(
-                'keydown',
-                handleKeyDown
-            );
-
-            window.removeEventListener(
-                'mousemove',
-                handleMouseMove
-            );
-
-            window.removeEventListener(
-                'mouseup',
-                handleMouseUp
-            );
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
         };
     }, []);
 
@@ -295,9 +276,7 @@ const Terminal = () => {
                 <div className="terminal-dots">
                     <span
                         className="dot red"
-                        onClick={() =>
-                            setIsOpen(false)
-                        }
+                        onClick={() => setIsOpen(false)}
                     ></span>
 
                     <span className="dot yellow"></span>
@@ -312,9 +291,7 @@ const Terminal = () => {
             <div
                 className="terminal-body"
                 onClick={() =>
-                    document
-                        .getElementById('term-input')
-                        .focus()
+                    document.getElementById('term-input')?.focus()
                 }
             >
                 <div className="terminal-history">
@@ -329,17 +306,13 @@ const Terminal = () => {
                 </div>
 
                 <div className="terminal-input-area">
-                    <span className="prompt">
-                        &gt;{' '}
-                    </span>
+                    <span className="prompt">&gt; </span>
 
                     <input
                         id="term-input"
                         type="text"
                         value={input}
-                        onChange={(e) =>
-                            setInput(e.target.value)
-                        }
+                        onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleCommand}
                         autoFocus
                         spellCheck="false"

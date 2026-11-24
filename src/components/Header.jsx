@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import './Header.css';
 
@@ -21,8 +22,10 @@ const Header = () => {
     const sections = [
         { id: 'home', label: 'Home' },
         { id: 'about-me', label: 'About Me' },
+        { id: 'experience', label: 'Experience' },
         { id: 'projects', label: 'Projects' },
         { id: 'skills', label: 'Skills' },
+        { id: 'contact', label: 'Contact' },
     ];
 
     useEffect(() => {
@@ -89,7 +92,7 @@ const Header = () => {
                         onClick={() => scrollToSection('home')}
                     >
                         <div className="logo gradient-text">
-                            Rawan Shakkah
+                            Rawan Shaqaqha
                         </div>
 
                         <div className="status-badge">
@@ -182,4 +185,3 @@ const Header = () => {
 };
 
 export default Header;
-

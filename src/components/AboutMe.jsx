@@ -32,7 +32,7 @@ const AboutMe = () => {
             id="about-me"
             className="about-me-section"
             ref={sectionRef}
-            aria-label="About Rawan Shakkah"
+            aria-label="About Rawan Shaqaqha"
         >
             {/* Background accents */}
             <div className="am-bg-blob am-blob-1" />
@@ -55,7 +55,7 @@ const AboutMe = () => {
                             <h2 className="am-heading">
                                 I'm{' '}
                                 <span className="am-name-highlight">
-                                    Rawan Shakkah
+                                    Rawan Shaqaqha
                                 </span>
                             </h2>
 
@@ -109,7 +109,7 @@ const AboutMe = () => {
 
                             <img
                                 src={profileImg}
-                                alt="Rawan Shakkah"
+                                alt="Rawan Shaqaqha"
                                 className="am-photo"
                             />
 

@@ -1,11 +1,17 @@
+
 import { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Loader from './Loader';
 import './Projects.css';
 
+
 const GITHUB_USERNAME = 'Rawanshakkah';
 const CARDS_PER_PAGE = 3;
 
+const projectImages = {
+    1: '/images/network-monitoring.png',
+    2: '/images/rag-chatbot.png',
+};
 const Projects = () => {
     const [activeTab, setActiveTab] = useState('top');
     const [isTabSwitching, setIsTabSwitching] = useState(false);
@@ -175,7 +181,7 @@ const Projects = () => {
     const hasMoreGithub =
         githubRepos.length > maxGithubVisible;
 
-    // After showing 12 (2 pages), show "View Complete on GitHub"
+    // After showing 6 (2 pages), show "View Complete on GitHub"
     const showViewAllGithub =
         githubPage >= 2 && hasMoreGithub;
 
@@ -273,16 +279,15 @@ const Projects = () => {
                                                         className="top-project-card"
                                                         style={{
                                                             '--card-index':
-                                                                index %
-                                                                CARDS_PER_PAGE,
+                                                                index % CARDS_PER_PAGE,
                                                         }}
                                                     >
 
                                                         {/* Image Preview */}
-                                                        {project.image && (
+                                                        {projectImages[project.id] && (
                                                             <div className="top-card-image">
                                                                 <img
-                                                                    src={project.image}
+                                                                    src={projectImages[project.id]}
                                                                     alt={project.title}
                                                                     loading="lazy"
                                                                 />
@@ -354,8 +359,7 @@ const Projects = () => {
                                     )}
 
                                     {/* Show More / Less */}
-                                    {topProjects.length >
-                                        CARDS_PER_PAGE &&
+                                    {topProjects.length > CARDS_PER_PAGE &&
                                         !isTabSwitching && (
                                             <div className="panel-expand-wrapper">
 
@@ -365,14 +369,9 @@ const Projects = () => {
                                                     ) : (
                                                         <button
                                                             className="panel-expand-btn"
-                                                            onClick={
-                                                                handleTopExpand
-                                                            }
+                                                            onClick={handleTopExpand}
                                                         >
-                                                            <span>
-                                                                Show More
-                                                            </span>
-
+                                                            <span>Show More</span>
                                                             <i className="bx bx-chevron-down"></i>
                                                         </button>
                                                     )
@@ -380,26 +379,16 @@ const Projects = () => {
                                                     <button
                                                         className="panel-expand-btn"
                                                         onClick={() => {
-                                                            setShowAllTop(
-                                                                false
-                                                            );
+                                                            setShowAllTop(false);
 
                                                             document
-                                                                .getElementById(
-                                                                    'projects'
-                                                                )
-                                                                ?.scrollIntoView(
-                                                                    {
-                                                                        behavior:
-                                                                            'smooth',
-                                                                    }
-                                                                );
+                                                                .getElementById('projects')
+                                                                ?.scrollIntoView({
+                                                                    behavior: 'smooth',
+                                                                });
                                                         }}
                                                     >
-                                                        <span>
-                                                            Show Less
-                                                        </span>
-
+                                                        <span>Show Less</span>
                                                         <i className="bx bx-chevron-up"></i>
                                                     </button>
                                                 )}
@@ -417,7 +406,6 @@ const Projects = () => {
                             {githubLoading && (
                                 <div className="panel-state">
                                     <Loader />
-
                                     <p className="panel-state-text">
                                         Fetching repositories...
                                     </p>
@@ -427,7 +415,6 @@ const Projects = () => {
                             {githubError && (
                                 <div className="panel-state error">
                                     <i className="bx bx-error-circle"></i>
-
                                     <p className="panel-state-text">
                                         Could not load GitHub repos.
                                         Please try again later.
@@ -454,8 +441,7 @@ const Projects = () => {
                                                         rel="noopener noreferrer"
                                                         style={{
                                                             '--card-index':
-                                                                index %
-                                                                CARDS_PER_PAGE,
+                                                                index % CARDS_PER_PAGE,
                                                         }}
                                                     >
 
@@ -466,9 +452,7 @@ const Projects = () => {
                                                             </div>
 
                                                             <span className="repo-updated">
-                                                                {formatDate(
-                                                                    repo.updated_at
-                                                                )}
+                                                                {formatDate(repo.updated_at)}
                                                             </span>
 
                                                         </div>
@@ -486,38 +470,26 @@ const Projects = () => {
 
                                                             {repo.language && (
                                                                 <span className="repo-lang">
-
                                                                     <span
                                                                         className="lang-dot"
                                                                         style={{
                                                                             background:
-                                                                                langColors[
-                                                                                repo
-                                                                                    .language
-                                                                                ] ||
+                                                                                langColors[repo.language] ||
                                                                                 '#8b949e',
                                                                         }}
                                                                     ></span>
-
-                                                                    {
-                                                                        repo.language
-                                                                    }
-
+                                                                    {repo.language}
                                                                 </span>
                                                             )}
 
                                                             <span className="repo-stat">
                                                                 <i className="bx bx-star"></i>
-                                                                {
-                                                                    repo.stargazers_count
-                                                                }
+                                                                {repo.stargazers_count}
                                                             </span>
 
                                                             <span className="repo-stat">
                                                                 <i className="bx bx-git-repo-forked"></i>
-                                                                {
-                                                                    repo.forks_count
-                                                                }
+                                                                {repo.forks_count}
                                                             </span>
 
                                                         </div>
@@ -541,11 +513,7 @@ const Projects = () => {
                                                     className="github-view-all-btn"
                                                 >
                                                     <i className="bx bxl-github"></i>
-
-                                                    <span>
-                                                        View Complete on GitHub
-                                                    </span>
-
+                                                    <span>View Complete on GitHub</span>
                                                     <i className="bx bx-link-external"></i>
                                                 </a>
                                             ) : hasMoreGithub ? (
@@ -554,14 +522,9 @@ const Projects = () => {
                                                 ) : (
                                                     <button
                                                         className="panel-expand-btn"
-                                                        onClick={
-                                                            handleGithubShowMore
-                                                        }
+                                                        onClick={handleGithubShowMore}
                                                     >
-                                                        <span>
-                                                            Show More
-                                                        </span>
-
+                                                        <span>Show More</span>
                                                         <i className="bx bx-chevron-down"></i>
                                                     </button>
                                                 )
