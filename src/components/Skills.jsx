@@ -3,7 +3,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Skills.css';
 
 const Skills = () => {
-    const [sectionRef, isSectionVisible] = useScrollReveal({ threshold: 0.1 });
+    const [sectionRef, isSectionVisible] = useScrollReveal({
+        threshold: 0.1,
+    });
 
     const skillGroups = [
         {
@@ -26,10 +28,23 @@ const Skills = () => {
                     name: 'React',
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
                 },
+                {
+                    name: 'TypeScript',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+                },
+                {
+                    name: 'Bootstrap',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
+                },
+                {
+                    name: 'Tailwind CSS',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
+                },
             ],
         },
+
         {
-            title: 'Backend',
+            title: 'Backend & Frameworks',
             icon: 'bx bx-server',
             skills: [
                 {
@@ -41,20 +56,23 @@ const Skills = () => {
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
                 },
                 {
+                    name: 'Entity Framework Core',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg',
+                },
+                {
                     name: 'REST API',
-                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
+                    iconClass: 'bx bx-plug',
                 },
                 {
                     name: 'Flask',
                     icon: 'https://cdn.simpleicons.org/flask/000000',
-
                 },
             ],
         },
-        {
-            title: 'Programming',
-            icon: 'bx bx-code-curly',
 
+        {
+            title: 'Programming Languages',
+            icon: 'bx bx-code-curly',
             skills: [
                 {
                     name: 'Python',
@@ -64,32 +82,26 @@ const Skills = () => {
                     name: 'C++',
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
                 },
-                {
-                    name: 'OOP',
-                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-                },
             ],
         },
+
         {
-            title: 'Database',
+            title: 'Databases',
             icon: 'bx bx-data',
             skills: [
-                {
-                    name: 'SQL',
-                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-                },
                 {
                     name: 'SQL Server',
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
                 },
                 {
-                    name: 'Entity Framework Core',
-                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
+                    name: 'MySQL',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
                 },
             ],
         },
+
         {
-            title: 'Tools',
+            title: 'Tools & Technologies',
             icon: 'bx bx-wrench',
             skills: [
                 {
@@ -100,14 +112,16 @@ const Skills = () => {
                     name: 'GitHub',
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
                 },
-                {
-                    name: 'Postman',
-                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
-                },
+
                 {
                     name: 'Docker',
                     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
                 },
+                {
+                    name: 'Linux',
+                    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+                },
+
             ],
         },
 
@@ -137,11 +151,10 @@ const Skills = () => {
                 },
                 {
                     name: 'Packet Tracer',
-                    iconClass: 'bx bx-desktop'
+                    iconClass: 'bx bx-desktop',
                 },
             ],
         },
-
     ];
 
     return (
@@ -170,7 +183,10 @@ const Skills = () => {
 
                 <div className="skills-grid">
                     {skillGroups.map((group) => (
-                        <div className="skill-category" key={group.title}>
+                        <div
+                            className="skill-category"
+                            key={group.title}
+                        >
                             <div className="category-header">
                                 <div className="category-icon">
                                     <i className={group.icon}></i>
@@ -185,7 +201,6 @@ const Skills = () => {
                                         className="skill-card"
                                         key={skill.name}
                                     >
-
                                         <div className="skill-icon">
                                             {skill.iconClass ? (
                                                 <i className={skill.iconClass}></i>
@@ -194,10 +209,12 @@ const Skills = () => {
                                                     src={skill.icon}
                                                     alt={`${skill.name} icon`}
                                                     loading="lazy"
+                                                    onError={(e) => {
+                                                        e.currentTarget.style.display = 'none';
+                                                    }}
                                                 />
                                             )}
                                         </div>
-
 
                                         <span>{skill.name}</span>
                                     </div>
